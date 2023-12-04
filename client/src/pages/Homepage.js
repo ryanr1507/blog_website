@@ -7,7 +7,7 @@ export const Homepage = () => {
 
   // Get all the posts from db 
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
+    fetch('https://blog-backend-0it9.onrender.com/post').then(response => {
       response.json().then(posts => {
         setPosts(posts);
       });

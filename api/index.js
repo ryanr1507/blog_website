@@ -1,16 +1,16 @@
-const express = require('express');
-const cors = require('cors');
-const dotenv = require( 'dotenv');
-const User = require('./models/User')
-const Post = require('./models/Post')
-const bcrypt = require('bcryptjs');
+const express from "express";
+import * as dotenv from "dotenv";
+import cors from "cors";
+import User from './models/User'
+import Post from './models/Post'
+import bcrypt from 'bcryptjs';
 const app = express();
-const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-const multer = require('multer');
+import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
+import multer  from 'multer';
 const uploadMiddleware = multer({dest: 'uploads/'});
-const fs = require('fs');
-const connectDB = require('./mongodb/connect');
+import fs from 'fs';
+import connectDB from'./mongodb/connect';
 const salt = bcrypt.genSaltSync(10);
 
 app.use (cors({credentials:true, origin:'http://localhost:3000'})); // need to specify if using credentials

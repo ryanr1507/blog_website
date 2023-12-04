@@ -13,7 +13,7 @@ const fs = require('fs');
 const connectDB = require('./mongodb/connect');
 const salt = bcrypt.genSaltSync(10);
 
-app.use (cors({credentials:true, origin:'http://localhost:3000'})); // need to specify if using credentials
+app.use (cors({credentials:true, origin:'https://gamer-blog.netlify.app'})); // need to specify if using credentials
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads')); // endpoint for uploads folder
@@ -21,7 +21,11 @@ app.use('/uploads', express.static(__dirname + '/uploads')); // endpoint for upl
 // Connect to mongodb
 dotenv.config();
 const secret = process.env.SECRET_KEY;
-connectDB(process.env.MONGODB_URL)
+connectDB(process.env.MONGODB_URL);
+
+app.get('/', (req,res) => {
+    res.send({message: 'Backend services working'});
+});
 
 app.post('/register', async (req,res) => {
     const {username, password} = req.body;
